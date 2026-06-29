@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "sbtbg",
+  "version": "${version}",
+  "name": "SkyblockTexturesBegone",
+  "description": "Blocks server resource packs (texture packs) while keeping your own. It tells the server the pack loaded so required-pack servers don't kick you, but never applies it, so anything the server pack would change falls back to vanilla or to your own resource packs. Items whose model only existed in the blocked pack fall back to their normal vanilla model instead of the missing-texture square.",
+  "authors": [
+    "vain-modding"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.vainmodding.sbtbg.Sbtbg"
+    ]
+  },
+  "mixins": [
+    "sbtbg.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "fabric-api": "*"
+  }
+}
