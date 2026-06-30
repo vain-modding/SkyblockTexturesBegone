@@ -8,6 +8,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -37,6 +38,13 @@ public abstract class ItemModelResolverMixin {
 
         Map<Identifier, ?> models = ((ModelManagerAccessor) modelManager).sbtbg$getBakedItemStackModels();
         if (models == null || models.containsKey(requested)) return value;
+
+        if (stack.has(DataComponents.PROFILE)) {
+            Identifier headModel = Items.PLAYER_HEAD.components().get(DataComponents.ITEM_MODEL);
+            if (headModel != null && models.containsKey(headModel)) {
+                return headModel;
+            }
+        }
 
         Identifier fallback = stack.getItem().components().get(DataComponents.ITEM_MODEL);
         if (fallback != null && !fallback.equals(requested) && models.containsKey(fallback)) {

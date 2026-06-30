@@ -6,7 +6,8 @@
   "client": [
     "ClientCommonPacketListenerImplMixin",
     "ItemModelResolverMixin",
-    "ModelManagerAccessor"
+    "ModelManagerAccessor",
+    "TooltipRenderUtilMixin"
   ],
   "injectors": {
     "defaultRequire": 1
